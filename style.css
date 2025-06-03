@@ -1,0 +1,146 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffe6f0, #ffe6cc);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 50px 20px;
+}
+
+h1 {
+  color: #ff3366;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.moments {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.moment-btn {
+  background-color: #ff6699;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.moment-btn:hover {
+  background-color: #ff3366;
+}
+
+.message-section {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffeef4;
+  border-radius: 0px;
+  box-shadow: 0 4px 0px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.message-section textarea {
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.message-section button {
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff7da9;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.message-section button:hover {
+  background-color: #ff5d95;
+}
+
+#submitted-message {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 1px;
+  border: 1px dashed #ff5d95;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.5s ease;
+}
+
+.caption {
+  margin: 15px auto;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  max-width: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #ffcccc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}

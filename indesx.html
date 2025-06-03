@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anniversary Kita</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Selamat ❤️</h1>
+    <h2 id="typing-text"></h2>
+
+    <div class="moments">
+      <button class="moment-btn" onclick="showModal('moment1')">Moment 1</button>
+      <button class="moment-btn" onclick="showModal('moment2')">Moment 2</button>
+      <button class="moment-btn" onclick="showModal('moment3')">Moment 3</button>
+      <button class="moment-btn" onclick="showModal('moment4')">Moment 4</button>
+      <button class="moment-btn" onclick="showModal('moment5')">Moment 5</button>
+      <button class="moment-btn" onclick="showModal('moment6')">Moment 6</button>
+    </div>
+
+    <div class="message-section">
+      <h2>Tulis pesan buat aku ❤️</h2>
+      <form action="https://formspree.io/f/mblyjbrp" method="POST">
+        <textarea name="message" placeholder="Tulis pesan di sini..." required></textarea>
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Popups -->
+  <div id="moment1" class="modal">
+    <span class="close" onclick="closeModal('moment1')">&times;</span>
+    <img class="modal-content" src="mimume.jfif" alt="Moment 1">
+    <div class="caption">Hari itu, kita cuma duduk berdua, ngobrol kecil, dan saling lempar tawa.
+Tapi entah kenapa, semuanya terasa spesial. Ini foto pertama kita bareng di dunia nyata dan sejak saat itu, dunia aku mulai berputar sedikit lebih hangat. ❤️</div>
+  </div>
+
+  <div id="moment2" class="modal">
+    <span class="close" onclick="closeModal('moment2')">&times;</span>
+    <img class="modal-content" src="1ef5890a-fb6e-47d1-846f-a9f77b5fa416.jpeg" alt="Moment 2">
+    <div class="caption">di foto ini kita nampak serasi, seperti pasangan yang sedang menikah anjayyyy</div>
+  </div>
+
+  <div id="moment3" class="modal">
+    <span class="close" onclick="closeModal('moment3')">&times;</span>
+    <img class="modal-content" src="282181bf-60de-4893-8e52-358d00f64159.jpeg" alt="Moment 3">
+    <div class="caption">di momen ini kita terlihat lucu, ini adalah gambaran kita nanti saat berkeluarga</div>
+  </div>
+
+  <div id="moment4" class="modal">
+    <span class="close" onclick="closeModal('moment4')">&times;</span>
+    <img class="modal-content" src="866758cd-a28b-4afb-8b1c-fd63ff50c5fd.jpeg" alt="Moment 4">
+    <div class="caption">ngedate ceritanya walaupun itu ga berdua setidaknya momen itu juga aku ga lupa, kalo foto ini tuh gabisa di post waktu itu karena masih backstreet</div>
+  </div>
+
+  <div id="moment5" class="modal">
+    <span class="close" onclick="closeModal('moment5')">&times;</span>
+    <img class="modal-content" src="c28426f4-b677-421a-97c2-206cc916b16b.jpeg" alt="Moment 5">
+    <div class="caption">kita ngedate jauh juga yahh sampe ke bali, suatu hal yang keren pacaran bisa sampe ke bali.</div>
+  </div>
+
+  <div id="moment6" class="modal">
+    <span class="close" onclick="closeModal('moment6')">&times;</span>
+    <img class="modal-content" src="8596580b-c968-40de-94b1-6a954de9a680.jpeg" alt="Moment 6">
+    <div class="caption">dan ini terakhir poto dimana kamu jadi pacar aku, alias kita jadian💖💖💖</div>
+  </div>
+
+  <script>
+     function showModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'block';
+      modal.classList.add('fade-in');
+      createParticles(modal);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll(".modal");
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+
+    const text = "happy anniversary sayang... ❤️";
+    let index = 0;
+    const typingText = document.getElementById("typing-text");
+
+    function typeEffect() {
+      if (index < text.length) {
+        typingText.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 60);
+      }
+    }
+
+    window.onload = typeEffect;
+
+    function createParticles(modal) {
+      const canvas = modal.querySelector('.particles-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = modal.offsetWidth;
+      canvas.height = modal.offsetHeight;
+
+      const emojis = ['❤️', '✨'];
+      const particles = [];
+
+      for (let i = 0; i < 40; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: canvas.height + Math.random() * 100,
+          size: 24 + Math.random() * 10,
+          emoji: emojis[Math.floor(Math.random() * emojis.length)],
+          speedY: Math.random() * 2 + 0.5,
+          alpha: 1
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+          ctx.font = `${p.size}px serif`;
+          ctx.globalAlpha = p.alpha;
+          ctx.fillText(p.emoji, p.x, p.y);
+          p.y -= p.speedY;
+          p.alpha -= 0.01;
+          if (p.alpha <= 0) particles.splice(i, 1);
+        });
+
+        if (particles.length > 0) {
+          requestAnimationFrame(draw);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      draw();
+    }
+  </script>
+</body>
+</html>
